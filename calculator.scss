@@ -1,0 +1,170 @@
+// MY OWN VARIABLE DECLARATIONS
+// FONT RELATED:
+$primaryFont: monospace;
+$primaryFontSize: 3vw;
+$secondaryFontSize: 1vw;
+
+
+// UI SIZES
+$numberButton__regular: 35px;
+$operatorButton_regular: 35px;
+
+$numberButton__short: 20px;
+$operatorButton__short: 20px;
+
+$numberButton__long: 50px;
+$operatorButton__long: 50px;
+
+
+// MARGIN AND PADDING
+$margin__regular: 1vw;
+$margin__short: 0.5vw;
+$margin__long: 1.5vw;
+
+$padding__regular: 1vw;
+$padding__short: 0.5vw;
+$padding__long: 1.5vw;
+
+
+// color schemes
+$color_1: #375482;
+$color_2: #F5AB33;
+$color_3: #5489DE;  
+$color_4: #FAB443;
+$color_5: #75A0E6;
+$color_6: #C97D02;
+$color_7: #03368A;
+
+
+
+@mixin header {
+  font-family: $primaryFont;
+  text-align: center;
+  margin: $margin__long;
+  padding: $padding__long;
+
+}
+@mixin container {
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto;
+
+ 
+}
+
+@mixin numpad {
+  
+  // width: 30vw;
+  // height: 30vw;
+
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  
+}
+
+@mixin display{
+  
+  // width: 30vw;
+  // height: 30vw;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  margin-top: 0.5vw;
+  margin-left: 10vw;
+  
+}
+
+// initial settings 
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+
+}
+
+body{
+  background-color: $color_1;
+  color: $color_6;
+}
+
+.header{
+  @include header();
+}
+
+
+#container{
+  @include container();
+}
+
+
+#display{
+  @include display();
+
+  width: 50vw;
+
+  #calculatorOutput{
+    width: 100%;
+    height: 65%;
+    
+  }
+  #calculatorInput{
+    width: 100%;
+  }
+  #calculatorMode{
+    float: right;
+    
+  }
+}
+textarea{
+  height: 180px; // change this to responsive later on
+}
+
+#numpad{
+  @include numpad();
+  
+  width: 50vw;
+  font-size: $secondaryFontSize;
+  
+  #numpad__inner-container-basic{
+    
+    width: 35vw;
+    height: 25vw;
+
+    // display:block;
+    // margin-left: auto;
+    // margin-right: auto;
+
+    .charValueBtnNum, .charValueBtnOperator, .charValueBtnMisc{
+      margin: 0.5vw;
+      width: 4vw;
+      height: 4vw;
+    }
+    
+    .charValueBtnEquals {
+      margin: 0.5vw;
+      width: 10vw;
+      height: 4vw;
+    }
+  }
+
+  #numpad__inner-container-advanced{
+    display:none;
+  }
+  #numpad__inner-container-programming{
+    display:none;
+  }
+  
+  // .charValueBtnOperator{
+  //   width: 30px;
+  //   height: 30px;
+  // }
+
+}
+

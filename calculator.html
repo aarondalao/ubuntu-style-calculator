@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <link rel="stylesheet" href="./calculator.css">
+  <script src="./newCalculator.js"></script>
+  <title>HTML5/SCSS/Javascript Calculator</title>
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="header__text">Calculator</h1>
+  </header>
+  <form action="" onsubmit="">
+    <main id="container">
+      <section id="display">
+
+        <select id="calculatorMode" name="mode" onchange="showCalculatorMode()">
+          <option value=" " disabled="true">select mode:</option>
+          <option value="Basic mode">Basic mode</option>
+          <option value="Advanced mode">Advanced mode</option>
+          <option value="Programming mode">Programming Mode</option>
+        </select>
+
+        <textarea name="output" id="calculatorOutput" cols="30" rows="10" disabled></textarea>
+        <input id="calculatorInput" type="text"  autofocus>
+
+      </section>
+      <section id="numpad">
+        <div id="numpad__inner-container-basic" class="">
+          <button type="button" data-number class="charValueBtnNum">7</button>
+          <button type="button" data-number class="charValueBtnNum">8</button>
+          <button type="button" data-number class="charValueBtnNum">9</button>
+          <button type="button" data-operation class="charValueBtnOperator">/</button>
+          
+          <button data-allClear class="charValueBtnOperator">AC</button>
+          <button type="button" data-undo class="charValueBtnOperator"> &#8630;</button>
+          <button type="button" data-number class="charValueBtnNum">4</button>
+          <button type="button" data-number class="charValueBtnNum">5</button>
+          <button type="button" data-number class="charValueBtnNum">6</button>
+          <button type="button" data-operation class="charValueBtnOperator">*</button>
+          <button type="button" data-miscellaneous class="charValueBtnOperator">(</button>
+          <button type="button" data-miscellaneous class="charValueBtnOperator">)</button>
+          <button type="button" data-number class="charValueBtnNum">1</button>
+          <button type="button" data-number class="charValueBtnNum">2</button>
+          <button type="button" data-number class="charValueBtnNum">3</button>
+          <button type="button" data-operation class="charValueBtnOperator">-</button>
+          <button type="button" data-operation class="charValueBtnOperator">x&sup2</button>
+          <button type="button" data-operation class="charValueBtnOperator">&#8730</button>
+          <button type="button" data-number class="charValueBtnNum">0</button>
+          <button type="button" data-number class="charValueBtnMisc">.</button>
+          <button type="button" data-miscellaneous class="charValueBtnOperator">%</button>
+          <button type="button" data-operation class="charValueBtnOperator">+</button>
+          <button type="submit" data-equals class="charValueBtnEquals">=</button>
+        </div>
+
+        <div id="numpad__inner-container-advanced">
+          <p>
+            this is advanced calculator
+          </p>
+        </div>
+
+        <div id="numpad__inner-container-programming">
+          <p>
+            this is programming type calculator
+          </p>
+        </div>
+      </section>
+    </main>
+    <p id="pass"></p>
+  </form>
+</body>
+
+</html>
