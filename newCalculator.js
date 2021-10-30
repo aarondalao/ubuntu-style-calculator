@@ -63,47 +63,40 @@ class Calculator {
   // new way:
   // check every character that the user inputs BEFORE the submit.
   // THIS IS STILL AN IDEA SO I WILL WORK ON IT LATER AFTER IM DONE WITH ALL OF THE BASIC FEATURES.
-  // inputChecker(userInput){
-  //   const basicCalculatorRegex =
-  //     /^([-+√]?)([(]*?)([-+√]?)(\d+([%])?|\d+(?:[.])(?:\d+)([%])?)([)]*?)(?:([-+*\/])([-+√]?)([(]*?)((?:[-+√])?\d+([%])?|\d+(?:[.])(?:\d+)([%])?)([)]*?))+$|([-+√]?)(\d+([%√])?)/g;
-  //   const textRegex = /[a-zA-Z]/gi;
-  //   console.log(textRegex.test(userInput));
-
-  // }
-
 
   // this checks which are the operators and the operands
   separateOperatorToOperand(expressions) {
     let referencePoint;
-
+    let operationArray = [];
     // important: this converts my string EXPRESSIONS into an ARRAY with one charater per element
     let convertedCharacterStringArray = expressions.split("");
 
-    
-
     // traverse the array and check where is the operator
     for (let i = 0; i < convertedCharacterStringArray.length; i++) {
+      // // parse the value of the element convertedCharacterStringArray of the position i and see if the result will be an NaN or not
+      // if (isNaN(parseFloat(convertedCharacterStringArray[i]))) {
+      //   this.operation = convertedCharacterStringArray[i];
+      //   referencePoint = i;
+      // }
+      // // if the reference point is less than the counter i
+      // if (referencePoint < i) {
+      //   this.nextOperand = convertedCharacterStringArray.slice(
+      //     referencePoint + 1,
+      //     convertedCharacterStringArray.length
+      //   );
+      // } else {
+      //   this.currentOperand = convertedCharacterStringArray.slice(
+      //     0,
+      //     referencePoint
+      //   );
+      // }
 
-      // parse the value of the element convertedCharacterStringArray of the position i and see if the result will be an NaN or not
-      if (isNaN(parseFloat(convertedCharacterStringArray[i]))) {
-        this.operation = convertedCharacterStringArray[i];
-        referencePoint = i;
-      }
-      // if the reference point is less than the counter i
-      if (referencePoint < i) {
-        
-        this.nextOperand = convertedCharacterStringArray.slice(
-          referencePoint + 1,
-          convertedCharacterStringArray.length
-        );
-      }
-      else{
-        this.currentOperand = convertedCharacterStringArray.slice(
-          0,
-          referencePoint
-        );
+      if(isNaN(parseFloat(convertedCharacterStringArray[i])) || convertedCharacterStringArray[0] !== '-'){
+        operationArray[i] = convertedCharacterStringArray[i];
       }
     }
+
+    console.log()
   }
 
   concatinateNumbers() {
@@ -122,7 +115,7 @@ class Calculator {
     } else if (this.operation === "-") {
       return this.currentOperand - this.nextOperand;
     } else if (this.operation === "/") {
-      return this.currentOperand / this.nextOperand;  
+      return this.currentOperand / this.nextOperand;
     } else if (this.operation === "*") {
       return this.currentOperand * this.nextOperand;
     }
@@ -204,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
   allClearButton.addEventListener("click", (e) => {
     calculator.allClear();
   });
-  undoButton.addEventListener('click', (e) =>{
+  undoButton.addEventListener("click", (e) => {
     calculator.undo();
   });
 
